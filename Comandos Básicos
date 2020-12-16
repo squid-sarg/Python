@@ -1,0 +1,32 @@
+import pandas as pd
+
+# declaração da variável que vai receber a planilha em excel
+dados = pd.read_excel("C:/Users/SANTANA_MARTINS/Desktop/IA/Pasta1.xlsx")
+
+# essa função mostra as 5 primeiras linhas do arquivo
+dados.head() 
+
+#mostra o tipo de dados de cada coluna
+dados.dtypes
+
+#cria a variável arquivo, e insere nela somente a coluna "Chuva (mm)"
+arquivo = dados['Chuva (mm)']
+
+#Verifica em todas as linhas, somente na coluna 'Chuva (mm)', quais linhas possuem o valor da coluna maior que zero
+manipulacao = dados.loc[dados['Chuva (mm)'] > 0.0]
+
+#Faz a contagem de quantas vezes cada valor da coluna 'Chuva (mm)' aparece
+manipulacao['Chuva (mm)'].value_counts()
+
+#faz o somatório de tudo o que possui numero
+# Perceba que ele já mostra qual foi o valor mínimo e máximo 
+
+manipulacao.describe()
+
+manipulacao['Data'].value_counts() 
+
+#Salva na variável testee, todas as linhas que contem a data 2020-01-22 e a coluna da Chuva que for maior que 0
+j1 = manipulacao.loc[(manipulacao["Data"]=="2020-01-22") & (manipulacao["Chuva (mm)"] > 0)]
+j2 = manipulacao.loc[(manipulacao["Data"]=="2020-01-23") & (manipulacao["Chuva (mm)"] > 0)]
+j3 = manipulacao.loc[(manipulacao["Data"]=="2020-01-24") & (manipulacao["Chuva (mm)"] > 0)]
+
